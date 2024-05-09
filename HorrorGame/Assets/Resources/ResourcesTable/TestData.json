@@ -1,0 +1,443 @@
+[
+  {
+    "Id": 1,
+    "Description": "AAAAAAA",
+    "Name": "Apple",
+    "Layer": "Frequent",
+    "UnlockLevel": 5,
+    "UnlockLevel3": [
+      5,
+      5
+    ],
+    "UnlockLevel4": [
+      [
+        5,
+        5
+      ],
+      [
+        5,
+        5
+      ]
+    ],
+    "UnlockLevel5": [
+      [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    ],
+    "BoolData": true,
+    "FloatData": 0.1,
+    "UnlockLevel6": [
+      5.1,
+      5.2
+    ]
+  },
+  {
+    "Id": 2,
+    "Description": "BBBBBBBB",
+    "Name": "Apple1",
+    "Layer": "Frequent",
+    "UnlockLevel": 5,
+    "UnlockLevel3": [
+      5,
+      5
+    ],
+    "UnlockLevel4": [
+      [
+        5,
+        5
+      ],
+      [
+        5,
+        5
+      ]
+    ],
+    "UnlockLevel5": [
+      [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    ],
+    "BoolData": true,
+    "FloatData": 1.1,
+    "UnlockLevel6": [
+      5.1,
+      5.2
+    ]
+  },
+  {
+    "Id": 3,
+    "Description": "CCCCCCC",
+    "Name": "Apple2",
+    "Layer": "Frequent",
+    "UnlockLevel": 5,
+    "UnlockLevel3": [
+      5,
+      5
+    ],
+    "UnlockLevel4": [
+      [
+        5,
+        5
+      ],
+      [
+        5,
+        5
+      ]
+    ],
+    "UnlockLevel5": [
+      [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    ],
+    "BoolData": true,
+    "FloatData": 2.1,
+    "UnlockLevel6": [
+      5.1,
+      5.2
+    ]
+  },
+  {
+    "Id": 4,
+    "Description": "FFFFFFFFF",
+    "Name": "Apple3",
+    "Layer": "Frequent",
+    "UnlockLevel": 5,
+    "UnlockLevel3": [
+      5,
+      5
+    ],
+    "UnlockLevel4": [
+      [
+        5,
+        5
+      ],
+      [
+        5,
+        5
+      ]
+    ],
+    "UnlockLevel5": [
+      [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    ],
+    "BoolData": true,
+    "FloatData": 3.1,
+    "UnlockLevel6": [
+      5.1,
+      5.2
+    ]
+  },
+  {
+    "Id": 5,
+    "Description": "DDDDDDD",
+    "Name": "Apple4",
+    "Layer": "Frequent",
+    "UnlockLevel": 5,
+    "UnlockLevel3": [
+      5,
+      5
+    ],
+    "UnlockLevel4": [
+      [
+        5,
+        5
+      ],
+      [
+        5,
+        5
+      ]
+    ],
+    "UnlockLevel5": [
+      [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    ],
+    "BoolData": true,
+    "FloatData": 4.1,
+    "UnlockLevel6": [
+      5.1,
+      5.2
+    ]
+  },
+  {
+    "Id": 6,
+    "Description": "EEEEEEEE",
+    "Name": "Apple5",
+    "Layer": "Frequent",
+    "UnlockLevel": 5,
+    "UnlockLevel3": [
+      5,
+      5
+    ],
+    "UnlockLevel4": [
+      [
+        5,
+        5
+      ],
+      [
+        5,
+        5
+      ]
+    ],
+    "UnlockLevel5": [
+      [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    ],
+    "BoolData": true,
+    "FloatData": 5.1,
+    "UnlockLevel6": [
+      5.1,
+      5.2
+    ]
+  },
+  {
+    "Id": 7,
+    "Description": "GGGGGGGG",
+    "Name": "Apple6",
+    "Layer": "Frequent",
+    "UnlockLevel": 5,
+    "UnlockLevel3": [
+      5,
+      5
+    ],
+    "UnlockLevel4": [
+      [
+        5,
+        5
+      ],
+      [
+        5,
+        5
+      ]
+    ],
+    "UnlockLevel5": [
+      [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    ],
+    "BoolData": true,
+    "FloatData": 6.1,
+    "UnlockLevel6": [
+      5.1,
+      5.2
+    ]
+  },
+  {
+    "Id": 8,
+    "Description": "WWWWWWW",
+    "Name": "Apple7",
+    "Layer": "Frequent",
+    "UnlockLevel": 5,
+    "UnlockLevel3": [
+      5,
+      5
+    ],
+    "UnlockLevel4": [
+      [
+        5,
+        5
+      ],
+      [
+        5,
+        5
+      ]
+    ],
+    "UnlockLevel5": [
+      [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    ],
+    "BoolData": true,
+    "FloatData": 7.1,
+    "UnlockLevel6": [
+      5.1,
+      5.2
+    ]
+  },
+  {
+    "Id": 9,
+    "Description": "HHHHHHHH",
+    "Name": "Apple8",
+    "Layer": "Frequent",
+    "UnlockLevel": 5,
+    "UnlockLevel3": [
+      5,
+      5
+    ],
+    "UnlockLevel4": [
+      [
+        5,
+        5
+      ],
+      [
+        5,
+        5
+      ]
+    ],
+    "UnlockLevel5": [
+      [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ]
+    ],
+    "BoolData": true,
+    "FloatData": 8.1,
+    "UnlockLevel6": [
+      5.1,
+      5.2
+    ]
+  }
+]
