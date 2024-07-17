@@ -10,18 +10,18 @@ public class UIManagerTemplate<T> : Singleton<T> where T : new()
 {
     public bool isInitialized { get; private set; } = false;
 
-    private Dictionary<ResourceScope, Dictionary<System.Type, GameObject>> _resourcesUI = new();
-    private Dictionary<UILayer, RectTransform> _canvases = new();
+    private Dictionary<EResourceScope, Dictionary<System.Type, GameObject>> _resourcesUI = new();
+    private Dictionary<EUILayer, RectTransform> _canvases = new();
 
     protected string canvasName = string.Empty;
     protected override void InitializeTemplate()
     {
-        foreach (var scope in System.Enum.GetValues(typeof(ResourceScope)))
+        foreach (var scope in System.Enum.GetValues(typeof(EResourceScope)))
         {
-            if ((ResourceScope)scope is ResourceScope.None or ResourceScope.Max)
+            if ((EResourceScope)scope is EResourceScope.None or EResourceScope.Max)
                 continue;
 
-            _resourcesUI[(ResourceScope)scope] = new();
+            _resourcesUI[(EResourceScope)scope] = new();
         }
         CreateCanvas();
 
@@ -36,9 +36,9 @@ public class UIManagerTemplate<T> : Singleton<T> where T : new()
     protected virtual void CreateCanvas()
     {
         var root = new GameObject($"{canvasName}Canvas");
-        foreach (var layer in System.Enum.GetValues(typeof(UILayer)))
+        foreach (var layer in System.Enum.GetValues(typeof(EUILayer)))
         {
-            if (true == (UILayer)layer is UILayer.None or UILayer.Max) continue;
+            if (true == (EUILayer)layer is EUILayer.None or EUILayer.Max) continue;
 
             var canvas = new GameObject($"{layer}Canvas", typeof(RectTransform)).GetComponent<RectTransform>();
             var cv = canvas.AddComponent<Canvas>();
@@ -54,11 +54,11 @@ public class UIManagerTemplate<T> : Singleton<T> where T : new()
 
             canvas.transform.SetParent(root.transform);
 
-            _canvases[(UILayer)layer] = canvas.GetComponent<RectTransform>();
+            _canvases[(EUILayer)layer] = canvas.GetComponent<RectTransform>();
         }
     }
 
-    public async Task<T1> CreateUI<T1>(string path, UILayer layer, ResourceScope scope = ResourceScope.Global) where T1 : Component
+    public async Task<T1> CreateUI<T1>(string path, EUILayer layer, EResourceScope scope = EResourceScope.Global) where T1 : Component
     {
         var asset = await ResourcesManager.Instance.Instantiate<T1>(path);
         if (asset == null)
@@ -68,7 +68,7 @@ public class UIManagerTemplate<T> : Singleton<T> where T : new()
         UIBase outUIBase = null;
         if (true == go.TryGetComponent<UIBase>(out outUIBase))
         {
-            UILayer uiLayer = outUIBase.GetLayer();
+            EUILayer uiLayer = outUIBase.GetLayer();
             go.transform.SetParent(_canvases[uiLayer]);
             go.transform.SetAsLastSibling();
             //go.transform.localPosition = Vector3.zero;

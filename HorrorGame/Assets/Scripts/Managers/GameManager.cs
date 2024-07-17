@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
-    [SerializeField] private Scenes _currentScene;
-    public Scenes currentScene { get { return _currentScene; }}
+    [SerializeField] private EScenes _currentScene;
+    public EScenes currentScene { get { return _currentScene; }}
 
     [SerializeField] private JsonLoader _jsonLoader = null;
     protected override void Awake()
@@ -45,16 +45,16 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
        switch (scene.name)
        {
-            case nameof(Scenes.TitleScene):
+            case nameof(EScenes.TitleScene):
                 {
-                    _currentScene = Scenes.TitleScene;
+                    _currentScene = EScenes.TitleScene;
                     TitleSequence();
                 }
                 break;
-            case nameof(Scenes.InGameScene):
+            case nameof(EScenes.InGameScene):
                 {
                     Debug.Log("인게임씬 로드 완");
-                    _currentScene = Scenes.InGameScene;
+                    _currentScene = EScenes.InGameScene;
                     InGameSequence();
                 }
                 break;

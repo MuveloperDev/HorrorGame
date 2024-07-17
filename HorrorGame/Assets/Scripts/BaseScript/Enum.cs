@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Enum
 {
-	public enum UILayer
+	public enum EUILayer
 	{
 		None = 0,
 		Static,
@@ -13,7 +13,7 @@ namespace Enum
 		Max
 	}
 
-    public enum ResourceScope
+    public enum EResourceScope
     {
         None = 0,
         Global,
@@ -22,33 +22,39 @@ namespace Enum
         Max
     }
 
-	public enum Scenes
+	public enum EScenes
 	{
         None = 0,
-        TitleScene = 0,
+        TitleScene = 1,
 		InGameScene,
         Max
     }
 
-    public enum MIBTIType
+    public enum ESoundsType 
     { 
-        None,
-        ISTJ = 1,
-        ISFJ,
-        INFJ,
-        INTJ,
-        ISTP,
-        ISFP,
-        INFP,
-        INTP,
-        ESTP,
-        ESFP,
-        ENFP,
-        ENTP,
-        ESTJ,
-        ESFJ,
-        ENFJ,
-        ENTJ,
+        None = 0,
+        Store,
+        Active,
+        Inactive,
+        Always,
+    }
+
+    public enum EAudioPlayType
+    {
+        OneShot = 0,
+        Loop
+    }
+
+    public enum EInteractiveAnimationType
+    {
+        Active,
+        Inactive,
+    }
+
+    public enum EStoragebleItemType
+    {
+        None = -1,
+        Item,
         Max
     }
 }

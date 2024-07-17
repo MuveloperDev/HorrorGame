@@ -7,7 +7,7 @@ using UnityEngine;
 #pragma warning disable CS1998 
 public class UIBase : MonoBehaviour
 {
-    [SerializeField] private UILayer _layer = UILayer.None;
+    [SerializeField] private EUILayer _layer = EUILayer.None;
 
     public bool isActive { get; private set; } = false;
 
@@ -38,7 +38,7 @@ public class UIBase : MonoBehaviour
         AfterHide();
     }
 
-    public void SetLayer(UILayer argLayer) => _layer = argLayer;
-    public UILayer GetLayer() => _layer;
+    public void SetLayer(EUILayer argLayer) => _layer = argLayer;
+    public EUILayer GetLayer() => _layer;
 }
 #pragma warning restore CS1998

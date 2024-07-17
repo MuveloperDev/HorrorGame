@@ -14,8 +14,8 @@ public class UIManager : Singleton<UIManager>
 
     public bool isInitialized { get; private set; } = false;
 
-    private Dictionary<ResourceScope, Dictionary<Type, GameObject>> _resourcesUI = new();
-    private Dictionary<UILayer, RectTransform> _canvases = new();
+    private Dictionary<EResourceScope, Dictionary<Type, GameObject>> _resourcesUI = new();
+    private Dictionary<EUILayer, RectTransform> _canvases = new();
 
     protected string canvasName = string.Empty;
     protected override void InitializeTemplate()
@@ -36,9 +36,9 @@ public class UIManager : Singleton<UIManager>
     protected virtual void CreateCanvas()
     {
         var root = new GameObject($"{canvasName}Canvas");
-        foreach (var layer in System.Enum.GetValues(typeof(UILayer)))
+        foreach (var layer in System.Enum.GetValues(typeof(EUILayer)))
         {
-            if (true == (UILayer)layer is UILayer.None or UILayer.Max) continue;
+            if (true == (EUILayer)layer is EUILayer.None or EUILayer.Max) continue;
 
             var canvas = new GameObject($"{layer}Canvas", typeof(RectTransform)).GetComponent<RectTransform>();
             var cv = canvas.AddComponent<Canvas>();
@@ -54,11 +54,11 @@ public class UIManager : Singleton<UIManager>
 
             canvas.transform.SetParent(root.transform);
 
-            _canvases[(UILayer)layer] = canvas.GetComponent<RectTransform>();
+            _canvases[(EUILayer)layer] = canvas.GetComponent<RectTransform>();
         }
     }
 
-    public async Task<T> CreateUI<T>(string path, UILayer layer, ResourceScope scope = ResourceScope.Global) where T : Component
+    public async Task<T> CreateUI<T>(string path, EUILayer layer, EResourceScope scope = EResourceScope.Global) where T : Component
     {
         var asset = await ResourcesManager.Instance.Instantiate<T>(path);
         if (asset == null) 
@@ -68,7 +68,7 @@ public class UIManager : Singleton<UIManager>
         UIBase outUIBase = null;
         if (true == go.TryGetComponent<UIBase>(out outUIBase))
         {
-            UILayer uiLayer = outUIBase.GetLayer();
+            EUILayer uiLayer = outUIBase.GetLayer();
             go.transform.SetParent(_canvases[uiLayer]);
             go.transform.SetAsLastSibling();
         }

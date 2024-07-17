@@ -77,10 +77,12 @@ public class BuildCustomWindow : EditorWindow
 
         // 변경 사항을 저장합니다.
         settings.SetDirty(AddressableAssetSettings.ModificationEvent.EntryMoved, null, true, true);
+        Debug.Log("Clear and load complete!");
     }
     private static void BuildAddressables()
     {
         AddressableAssetSettings.BuildPlayerContent();
+        Debug.Log("Build complete!");
     }
 
     private void OnEnable()
@@ -200,13 +202,11 @@ public class BuildCustomWindow : EditorWindow
         if (GUILayout.Button("Clear And Load", ButtonWidth, ButtonHeight, ButtonPadding))
         {
             AssignPrefabsToAddressables();
-            Debug.Log("Button clicked!");
         }
         GUILayout.Space(200);
         if (GUILayout.Button("Build", ButtonWidth, ButtonHeight, ButtonPadding))
         {
             BuildAddressables();
-            Debug.Log("Button clicked!");
         }
         GUILayout.FlexibleSpace();
         GUILayout.EndHorizontal();
