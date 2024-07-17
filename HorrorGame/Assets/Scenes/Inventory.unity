@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &222226576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,6 +621,8 @@ MonoBehaviour:
     keys: 
     values: []
   _mesh: {fileID: 0}
+  _type: 0
+  _sprite: {fileID: 0}
 --- !u!114 &961452551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,10 +668,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6fae8dad1b6d7249a7a6585dd786c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
   playerBody: {fileID: 1408594433}
+  mouseSensitivity: 100
   moveSpeed: 5
   rotSpeed: 2
+  xRot: 0
+  yRot: 0
 --- !u!4 &1408594433
 Transform:
   m_ObjectHideFlags: 0
