@@ -8,6 +8,7 @@ public class BaseStoreagebleItem : BaseInteractive, IStorageableItem
     [SerializeField] protected MeshRenderer _mesh;
 
     [Header("[ Info ]")]
+    [SerializeField] protected EStoragebleItemType _type;
     [SerializeField] protected Sprite _sprite; // 인벤토리 저장시 사용될 이미지.
 
     protected override void Awake()
