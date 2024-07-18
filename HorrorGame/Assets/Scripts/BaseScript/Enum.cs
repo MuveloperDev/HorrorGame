@@ -57,5 +57,14 @@ namespace Enum
         Item,
         Max
     }
+
+    // Animations
+    public enum EMainPanel
+    {
+        Start,
+        Show,
+        Hide,
+        InstantIn
+    }
 }
 

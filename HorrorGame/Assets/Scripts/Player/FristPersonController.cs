@@ -24,6 +24,7 @@ public class FristPersonController : MonoBehaviour
 
     void Update()
     {
+        UpdateInput();
         Rotation();
         Move();
     }
@@ -49,6 +50,18 @@ public class FristPersonController : MonoBehaviour
 
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
         playerBody.Translate(move * moveSpeed * Time.deltaTime, Space.World);
+    }
+    private void UpdateInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!UIIngameContentMgr.Instance.inventory.isActive)
+            {
+                UIIngameContentMgr.Instance.inventory.Show();
+                return;
+            }
+            UIIngameContentMgr.Instance.inventory.Hide();
+        }
     }
 
    

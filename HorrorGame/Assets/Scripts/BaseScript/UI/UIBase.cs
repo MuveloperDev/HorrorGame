@@ -2,20 +2,28 @@ using Cysharp.Threading.Tasks;
 using Enum;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 #pragma warning disable CS1998 
 public class UIBase : MonoBehaviour
 {
+    [Header("Canvas")]
     [SerializeField] private EUILayer _layer = EUILayer.None;
 
-    public bool isActive { get; private set; } = false;
+    protected CancellationTokenSource _cts;
+    public bool isActive { get; protected set; } = false;
+
+    protected virtual void Awake() { }
+    protected virtual void Start() { }
+    protected virtual void Update() { }
+    protected virtual void OnDestroy() { }
 
     protected async virtual UniTask BeforeShow()
     { }
     protected virtual void AfterShow()
     { }
-    public async void Show()
+    public virtual async void Show()
     {
         if (true == gameObject.activeSelf)
             return;
@@ -28,11 +36,11 @@ public class UIBase : MonoBehaviour
     { }
     protected virtual void AfterHide()
     { }
-    public async void Hide()
+    public virtual async void Hide()
     {
         if (false == gameObject.activeSelf)
             return;
-        //await BeforeHide();
+        await BeforeHide();
         gameObject.SetActive(false);
         isActive = false;
         AfterHide();
