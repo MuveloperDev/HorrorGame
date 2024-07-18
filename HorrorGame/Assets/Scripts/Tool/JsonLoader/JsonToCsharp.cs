@@ -14,7 +14,8 @@ public class JsonToCSharp : EditorWindow
     [MenuItem("Tools/Generate C# Classes from JSON Files")]
     public static void ShowWindow()
     {
-        EditorWindow.GetWindow(typeof(JsonToCSharp));
+        GenerateClassesFromJson();
+        //EditorWindow.GetWindow(typeof(JsonToCSharp));
     }
     private void OnGUI()
     {
@@ -25,7 +26,7 @@ public class JsonToCSharp : EditorWindow
         }
     }
 
-    private void GenerateClassesFromJson()
+    private static void GenerateClassesFromJson()
     {
         string resourcesPath = Path.Combine(Application.dataPath, "Resources", "ResourcesTable");
         DirectoryInfo directoryInfo = new DirectoryInfo(resourcesPath);
@@ -55,7 +56,7 @@ public class JsonToCSharp : EditorWindow
         AssetDatabase.Refresh();
     }
 
-    private string GenerateClass(string className, JArray jsonArray)
+    private static string GenerateClass(string className, JArray jsonArray)
     {
         JObject firstObject = (JObject)jsonArray.FirstOrDefault();
         if (firstObject == null)
@@ -101,7 +102,7 @@ public class {className}
         return classTemplate;
     }
 
-    private string GetArrayType(JArray array)
+    private static string GetArrayType(JArray array)
     {
         JTokenType arrayType = array.FirstOrDefault()?.Type ?? JTokenType.Null;
         if (arrayType == JTokenType.Array)

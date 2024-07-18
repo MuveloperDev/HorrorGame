@@ -1,0 +1,20 @@
+﻿[
+  {
+    "Id": 1,
+    "Description": 1,
+    "ResourcePath": "aaaaa",
+    "Ref_InventoryItemInfo": 1
+  },
+  {
+    "Id": 2,
+    "Description": 2,
+    "ResourcePath": "vvvvv",
+    "Ref_InventoryItemInfo": 1
+  },
+  {
+    "Id": 3,
+    "Description": 3,
+    "ResourcePath": "bbbbb",
+    "Ref_InventoryItemInfo": 1
+  }
+]

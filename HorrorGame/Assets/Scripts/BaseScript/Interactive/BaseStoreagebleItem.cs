@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Enum;
+using Unity.VisualScripting;
 public class BaseStoreagebleItem : BaseInteractive, IStorageableItem
 {
     [Header("[ Mesh ]")]
@@ -10,11 +11,19 @@ public class BaseStoreagebleItem : BaseInteractive, IStorageableItem
     [Header("[ Info ]")]
     [SerializeField] protected EStoragebleItemType _type;
     [SerializeField] protected Sprite _sprite; // 인벤토리 저장시 사용될 이미지.
+    public int itemDifinitionId = 1;
 
+    private ItemDefinitionData _itemDefinitionData;
     protected override void Awake()
     {
         base.Awake();
         _mesh = GetComponent<MeshRenderer>();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        _itemDefinitionData = ItemDefinitionData.table[itemDifinitionId];
     }
     public virtual void Store()
     {
@@ -43,5 +52,14 @@ public class BaseStoreagebleItem : BaseInteractive, IStorageableItem
         base.OnPointerExit();
     }
 
+    public ItemDefinitionData GetItemDefinitionData()
+    {
+        if (null == _itemDefinitionData)
+        {
+            Debug.LogError("Item definition data is null");
+            return null;
+        }
+        return _itemDefinitionData;
+    }
     public BaseStoreagebleItem GetBaseStoreagebleItem() => this;
 }

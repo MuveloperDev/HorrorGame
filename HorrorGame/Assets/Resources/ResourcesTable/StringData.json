@@ -1,27 +1,17 @@
-[
+﻿[
   {
     "Id": 1,
-    "En": "MBTI\\n<color=#FFA8E1>Love</color> Simulation",
-    "Kr": "MBTI\\n<color=#FFA8E1>연애</color> 시뮬레이션"
+    "En": "Description1",
+    "Kr": "설명1"
   },
   {
     "Id": 2,
-    "En": "New Game",
-    "Kr": "새 게임"
+    "En": "Description2",
+    "Kr": "설명2"
   },
   {
     "Id": 3,
-    "En": "Load",
-    "Kr": "불러오기"
-  },
-  {
-    "Id": 4,
-    "En": "Option",
-    "Kr": "옵션"
-  },
-  {
-    "Id": 5,
-    "En": "Quit",
-    "Kr": "나가기"
+    "En": "Description3",
+    "Kr": "설명3"
   }
 ]
