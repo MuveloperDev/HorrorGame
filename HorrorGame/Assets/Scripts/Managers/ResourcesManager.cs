@@ -13,13 +13,9 @@ public class ResourcesManager : Singleton<ResourcesManager>
     private Dictionary<EResourceScope, List<object>> handles = new();
     private Dictionary<string, object> loadedHandles = new();
 
-    protected override void InitializeTemplate()
+    protected override void Initialize()
     {
-        base.InitializeTemplate();
-        Initialize();
-    }
-    private void Initialize()
-    {
+        base.Initialize();
         foreach (var scope in System.Enum.GetValues(typeof(EResourceScope)))
         {
             handles[(EResourceScope)scope] = new List<object>();

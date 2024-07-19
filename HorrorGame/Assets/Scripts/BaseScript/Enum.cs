@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Enum
 {
-	public enum EUILayer
+	public enum EUICanvasLayer
 	{
 		None = 0,
 		Static,
@@ -61,6 +61,7 @@ namespace Enum
     // Animations
     public enum EMainPanel
     {
+        None = -1,
         Start,
         Show,
         Hide,

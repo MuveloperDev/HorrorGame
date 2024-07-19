@@ -9,7 +9,7 @@ using UnityEngine;
 public class UIBase : MonoBehaviour
 {
     [Header("Canvas")]
-    [SerializeField] private EUILayer _layer = EUILayer.None;
+    [SerializeField] private EUICanvasLayer _layer = EUICanvasLayer.None;
 
     protected CancellationTokenSource _cts;
     public bool isActive { get; protected set; } = false;
@@ -46,7 +46,7 @@ public class UIBase : MonoBehaviour
         AfterHide();
     }
 
-    public void SetLayer(EUILayer argLayer) => _layer = argLayer;
-    public EUILayer GetLayer() => _layer;
+    public void SetLayer(EUICanvasLayer argLayer) => _layer = argLayer;
+    public EUICanvasLayer GetLayer() => _layer;
 }
 #pragma warning restore CS1998

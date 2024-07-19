@@ -20,7 +20,7 @@ public class StringLocalizerManager : Singleton<StringLocalizerManager>
 
     public TMP_FontAsset fontAsset { get; private set; } = null;
 
-    protected override async void InitializeTemplate()
+    protected override async void Initialize()
     {
         currentLanguage = ELanguage.Kr;
         var font = await ResourcesManager.Instance.LoadAssetAsyncGeneric<TMP_FontAsset>("Assets/Resources/Fonts/Kr/Godo/GodoB_SDF.asset");

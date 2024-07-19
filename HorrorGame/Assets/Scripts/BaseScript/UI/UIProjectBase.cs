@@ -1,23 +1,28 @@
 using Cysharp.Threading.Tasks;
 using Enum;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.Build;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator), typeof(CanvasGroup))]
 public class UIProjectBase : UIBase
 {
     [Header("Animation")]
     [SerializeField] private Animator _animator;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private SerializeDictionary<EMainPanel, AudioClip> _audioClip = new();
     protected override void Awake()
     {
         base.Awake();
         _cts = new();
         _cts.RegisterRaiseCancelOnDestroy(this);
         _animator = GetComponent<Animator>();
-        UIIngameContentMgr.Instance.inventory = this;
+        IngameUIManager.Instance.inventory = this;
         gameObject.SetActive(false);
     }
     protected override void AfterShow()
@@ -27,6 +32,7 @@ public class UIProjectBase : UIBase
     }
     protected async override UniTask BeforeHide()
     {
+        // Hide 애니메이션 이후로 처리
         await base.BeforeHide();
         _animator.Play(EMainPanel.Hide.ToString(), 0);
 
@@ -38,6 +44,5 @@ public class UIProjectBase : UIBase
     {
         base.AfterHide();
         Cursor.lockState = CursorLockMode.Locked;
-        gameObject.SetActive(false);
     }
 }

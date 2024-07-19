@@ -6,15 +6,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManagerTemplate<T> : Singleton<T> where T : new()
+public class UIManagerTemplate<T> : Singleton<T> where T : UIManagerTemplate<T>,  new()
 {
     public bool isInitialized { get; private set; } = false;
 
     private Dictionary<EResourceScope, Dictionary<System.Type, GameObject>> _resourcesUI = new();
-    private Dictionary<EUILayer, RectTransform> _canvases = new();
+    private Dictionary<EUICanvasLayer, RectTransform> _canvases = new();
 
     protected string canvasName = string.Empty;
-    protected override void InitializeTemplate()
+    protected override void Initialize()
     {
         foreach (var scope in System.Enum.GetValues(typeof(EResourceScope)))
         {
@@ -36,9 +36,9 @@ public class UIManagerTemplate<T> : Singleton<T> where T : new()
     protected virtual void CreateCanvas()
     {
         var root = new GameObject($"{canvasName}Canvas");
-        foreach (var layer in System.Enum.GetValues(typeof(EUILayer)))
+        foreach (var layer in System.Enum.GetValues(typeof(EUICanvasLayer)))
         {
-            if (true == (EUILayer)layer is EUILayer.None or EUILayer.Max) continue;
+            if (true == (EUICanvasLayer)layer is EUICanvasLayer.None or EUICanvasLayer.Max) continue;
 
             var canvas = new GameObject($"{layer}Canvas", typeof(RectTransform)).GetComponent<RectTransform>();
             var cv = canvas.AddComponent<Canvas>();
@@ -54,11 +54,11 @@ public class UIManagerTemplate<T> : Singleton<T> where T : new()
 
             canvas.transform.SetParent(root.transform);
 
-            _canvases[(EUILayer)layer] = canvas.GetComponent<RectTransform>();
+            _canvases[(EUICanvasLayer)layer] = canvas.GetComponent<RectTransform>();
         }
     }
 
-    public async Task<T1> CreateUI<T1>(string path, EUILayer layer, EResourceScope scope = EResourceScope.Global) where T1 : Component
+    public async Task<T1> CreateUI<T1>(string path, EUICanvasLayer layer, EResourceScope scope = EResourceScope.Global) where T1 : Component
     {
         var asset = await ResourcesManager.Instance.Instantiate<T1>(path);
         if (asset == null)
@@ -68,7 +68,7 @@ public class UIManagerTemplate<T> : Singleton<T> where T : new()
         UIBase outUIBase = null;
         if (true == go.TryGetComponent<UIBase>(out outUIBase))
         {
-            EUILayer uiLayer = outUIBase.GetLayer();
+            EUICanvasLayer uiLayer = outUIBase.GetLayer();
             go.transform.SetParent(_canvases[uiLayer]);
             go.transform.SetAsLastSibling();
             //go.transform.localPosition = Vector3.zero;
