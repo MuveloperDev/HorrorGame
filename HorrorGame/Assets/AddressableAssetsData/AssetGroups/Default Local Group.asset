@@ -49,6 +49,22 @@ MonoBehaviour:
     m_Address: Materials/OutlineMaterial
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 16f0dea6460c42a4aa85b415ffc1e1f4
+    m_Address: Assets/Resources/Fonts/En/HorrorFonts/Roboto-Regular SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1777a3f3a3df9a542a29c5386280bdda
+    m_Address: Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Bold SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 57392bee0bfba204d9d50981059601bc
+    m_Address: Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Light SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 72d378f09c9b977459878c156d9e2a44
+    m_Address: Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Regular SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3f318c42e1aa6ed4e9a142645aa54c32, type: 2}
   m_SchemaSet:

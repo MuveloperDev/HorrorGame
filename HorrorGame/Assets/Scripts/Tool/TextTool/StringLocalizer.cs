@@ -3,50 +3,89 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+public enum ETMPColorType
+{
+    PRIMARY,
+    SECONDARY,
+    PRIMARY_REVERSED,
+    NEGATIVE,
+    BACKGROUND,
+    BACKGROUND_ALT,
+    CUSTOM
+}
+
+public enum ETMPFontType
+{
+    LIGHT,
+    MEDIUM,
+    BOLD,
+    ALTERNATIVE_1,
+    //ALTERNATIVE_2
+}
 
 public class StringLocalizer : MonoBehaviour
 {
-    [Header("[ DEPENDENCE ]")]
-    [SerializeField] private TextMeshProUGUI tmp;
-    [Header("[ INFORMATION ]")]
-    [SerializeField] private int _currentId = -1;
-    [SerializeField] private bool _isUpdateInit = false;
 
+    [Header("[ RESOURCES ]")]
+    [SerializeField] private TextMeshProUGUI _text;
+    [SerializeField] private TMP_FontAsset _font;
+
+    [Header("[ INFORMATION ]")]
+    [SerializeField] private bool _isUpdateInit = false;
+    [SerializeField] private Color _primaryColor = Color.white;
+    [SerializeField] private Color _primaryReversedColor = new Color(0.3215686f, 0.5372549f, 0.7490196f, 1);
+    [SerializeField] private Color _secondaryColor = Color.white;
+    [SerializeField] private Color _negativeColor = new Color(0.7490196f, 0.07450981f, 0.07450981f, 1);
+    [SerializeField] private Color _backgroundColor = new Color(0.4352941f, 0.5137255f, 0.7490196f, 1);
+    [SerializeField] private Color _backgroundAltColor = Color.black;
+    [SerializeField] private Color _customColor = Color.black;
+
+    [Header("[ OPTIONS ]")]
+    [SerializeField] private int _stringId = -1;
+    [SerializeField] private bool keepAlphaValue = false;
+    [SerializeField] private ETMPColorType colorType;
+    [SerializeField] private ETMPFontType _fontType;
     private void Awake()
     {
-        tmp = GetComponent<TextMeshProUGUI>();
-        if (null == tmp)
+        _text = GetComponent<TextMeshProUGUI>();
+        if (null == _text)
         {
             Debug.LogError($"{GetType()} tmp is null.");
             return;
         }
+        _primaryColor = Color.white;
+        _primaryReversedColor = new Color(0.3215686f, 0.5372549f, 0.7490196f, 1);
+        _secondaryColor = Color.white;
+        _negativeColor = new Color(0.7490196f, 0.07450981f, 0.07450981f, 1);
+        _backgroundColor = new Color(0.4352941f, 0.5137255f, 0.7490196f, 1);
+        _backgroundAltColor = Color.black;
     }
     async void Start()
     {
         if (null == StringLocalizerManager.Instance.fontAsset)
             await UniTask.WaitUntil(() => null != StringLocalizerManager.Instance.fontAsset);
 
-        tmp.font = StringLocalizerManager.Instance.fontAsset;
         StringLocalizerManager.Instance.onChangeLanguage += UpdateLanguage;
         if (true == _isUpdateInit)
         {
-            UpdateString(_currentId);
+            UpdateString(_stringId);
         }
+        await UpdateText();
     }
 
     public void UpdateString(int id)
     {
-        _currentId = id;
+        _stringId = id;
         switch (StringLocalizerManager.Instance.currentLanguage)
         {
             case ELanguage.En:
                 {
-                    tmp.text = StringData.table[id].En.Replace("\\n", "\n");
+                    _text.text = StringData.table[id].En.Replace("\\n", "\n");
                 }
                 break;
             case ELanguage.Kr:
                 {
-                    tmp.text = StringData.table[id].Kr.Replace("\\n", "\n"); ;
+                    _text.text = StringData.table[id].Kr.Replace("\\n", "\n"); ;
                 }
                 break;
             default:
@@ -55,24 +94,86 @@ public class StringLocalizer : MonoBehaviour
         }
     }
 
-    public void UpdateLanguage(ELanguage eLanguage)
+    public async void UpdateLanguage(ELanguage eLanguage)
     {
         switch (eLanguage)
         {
             case ELanguage.En:
                 {
-                    UpdateString(_currentId);
+                    UpdateString(_stringId);
                 }
                 break;
             case ELanguage.Kr:
                 {
-                    UpdateString(_currentId);
+                    UpdateString(_stringId);
                 }
                 break;
             default:
                 Debug.LogError("Invaild language..");
                 break;
         }
-        tmp.font = StringLocalizerManager.Instance.fontAsset;
+        await UpdateText();
+        //_text.font = StringLocalizerManager.Instance.fontAsset;
+    }
+
+    async UniTask UpdateText()
+    {
+        if (keepAlphaValue == false)
+        {
+            switch (colorType)
+            {
+                case ETMPColorType.PRIMARY:
+                    _text.color = _primaryColor;
+                    break;
+                case ETMPColorType.SECONDARY:
+                    _text.color = _secondaryColor;
+                    break;
+                case ETMPColorType.PRIMARY_REVERSED:
+                    _text.color = _primaryReversedColor;
+                    break;
+                case ETMPColorType.NEGATIVE:
+                    _text.color = _negativeColor;
+                    break;
+                case ETMPColorType.BACKGROUND:
+                    _text.color = _backgroundColor;
+                    break;
+                case ETMPColorType.BACKGROUND_ALT:
+                    _text.color = _backgroundAltColor;
+                    break;
+                case ETMPColorType.CUSTOM:
+                    _text.color = _customColor;
+                    break;
+            }
+        }
+        else
+        {
+            switch (colorType)
+            {
+                case ETMPColorType.PRIMARY:
+                    _text.color = new Color(_primaryColor.r, _primaryColor.g, _primaryColor.b, _text.color.a);
+                    break;
+                case ETMPColorType.SECONDARY:
+                    _text.color = new Color(_secondaryColor.r, _secondaryColor.g, _secondaryColor.b, _text.color.a);
+                    break;
+                case ETMPColorType.PRIMARY_REVERSED:
+                    _text.color = new Color(_primaryReversedColor.r, _primaryReversedColor.g, _primaryReversedColor.b, _text.color.a);
+                    break;
+                case ETMPColorType.NEGATIVE:
+                    _text.color = new Color(_negativeColor.r, _negativeColor.g, _negativeColor.b, _text.color.a);
+                    break;
+                case ETMPColorType.BACKGROUND:
+                    _text.color = new Color(_backgroundColor.r, _backgroundColor.g, _backgroundColor.b, _text.color.a);
+                    break;
+                case ETMPColorType.BACKGROUND_ALT:
+                    _text.color = new Color(_backgroundAltColor.r, _backgroundAltColor.g, _backgroundAltColor.b, _text.color.a);
+                    break;
+                case ETMPColorType.CUSTOM:
+                    _text.color = new Color(_customColor.r, _customColor.g, _customColor.b, _text.color.a); ;
+                    break;
+            }
+        }
+
+        _text.font = await ResourcesManager.Instance.GetTMPFont(_fontType);
+        _font = _text.font;
     }
 }

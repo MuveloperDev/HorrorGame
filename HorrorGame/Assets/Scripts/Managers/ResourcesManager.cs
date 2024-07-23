@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -12,13 +13,17 @@ public class ResourcesManager : Singleton<ResourcesManager>
 
     private Dictionary<EResourceScope, List<object>> handles = new();
     private Dictionary<string, object> loadedHandles = new();
-
+    private Dictionary<ELanguage, Dictionary<ETMPFontType, TMP_FontAsset>> _fontDictionary = new();
     protected override void Initialize()
     {
         base.Initialize();
         foreach (var scope in System.Enum.GetValues(typeof(EResourceScope)))
         {
             handles[(EResourceScope)scope] = new List<object>();
+        }
+        foreach (var language in System.Enum.GetValues(typeof(ELanguage)))
+        {
+            _fontDictionary[(ELanguage)language] = new();
         }
     }
 
@@ -252,5 +257,61 @@ public class ResourcesManager : Singleton<ResourcesManager>
         }
 
         return atlas;
+    }
+    
+    public async UniTask<TMP_FontAsset> GetTMPFont(ETMPFontType type)
+    {
+       
+        if (_fontDictionary[StringLocalizerManager.Instance.currentLanguage].ContainsKey(type))
+            return _fontDictionary[StringLocalizerManager.Instance.currentLanguage][type];
+
+        TMP_FontAsset fontAsset = null;
+        switch (StringLocalizerManager.Instance.currentLanguage)
+        {
+            case ELanguage.En:
+                {
+                    switch (type)
+                    {
+                        case ETMPFontType.LIGHT:
+                            fontAsset = await LoadAssetAsyncGeneric<TMP_FontAsset>("Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Light SDF.asset");
+                            break;
+                        case ETMPFontType.MEDIUM:
+                            fontAsset = await LoadAssetAsyncGeneric<TMP_FontAsset>("Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Regular SDF.asset");
+                            break;
+                        case ETMPFontType.BOLD:
+                            fontAsset = await LoadAssetAsyncGeneric<TMP_FontAsset>("Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Bold SDF.asset");
+                            break;
+                        case ETMPFontType.ALTERNATIVE_1:
+                            fontAsset = await LoadAssetAsyncGeneric<TMP_FontAsset>("Assets/Resources/Fonts/En/HorrorFonts/Roboto-Regular SDF.asset");
+                            break;
+                    }
+                }
+                break;
+            case ELanguage.Kr:
+                {
+                    switch (type)
+                    {
+                        case ETMPFontType.LIGHT:
+                            fontAsset = await LoadAssetAsyncGeneric<TMP_FontAsset>("Assets/Resources/Fonts/Kr/Godo/GodoM_SDF.asset");
+                            break;
+                        case ETMPFontType.MEDIUM:
+                            fontAsset = await LoadAssetAsyncGeneric<TMP_FontAsset>("Assets/Resources/Fonts/Kr/Godo/GodoB_SDF.asset");
+                            break;
+                        case ETMPFontType.BOLD:
+                            fontAsset = await LoadAssetAsyncGeneric<TMP_FontAsset>("Assets/Resources/Fonts/Kr/Godo/GodoB_SDF.asset");
+                            break;
+                        case ETMPFontType.ALTERNATIVE_1:
+                            fontAsset = await LoadAssetAsyncGeneric<TMP_FontAsset>("Assets/Resources/Fonts/Kr/Godo/GodoM_SDF.asset");
+                            break;
+                    }
+
+                }
+                break;
+            default:
+                break;
+        }
+
+        _fontDictionary[StringLocalizerManager.Instance.currentLanguage][type] = fontAsset;
+        return fontAsset;
     }
 }
