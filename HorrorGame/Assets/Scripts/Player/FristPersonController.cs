@@ -26,7 +26,7 @@ public class FristPersonController : MonoBehaviour
     }
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         transform.rotation = Quaternion.identity;
     }
 
