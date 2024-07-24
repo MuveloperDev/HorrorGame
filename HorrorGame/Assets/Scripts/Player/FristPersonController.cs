@@ -16,6 +16,14 @@ public class FristPersonController : MonoBehaviour
     [SerializeField] private  float xRot = 0f;
     [SerializeField] private float yRot = 0f;
 
+    public static FristPersonController instance;
+
+    public bool isUpdate = true;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -24,6 +32,8 @@ public class FristPersonController : MonoBehaviour
 
     void Update()
     {
+        if (!isUpdate)
+            return;
         UpdateInput();
         Rotation();
         Move();
@@ -58,6 +68,7 @@ public class FristPersonController : MonoBehaviour
             if (!IngameUIManager.Instance.inventory.isActive)
             {
                 IngameUIManager.Instance.inventory.Show();
+                isUpdate = false;
                 return;
             }
             IngameUIManager.Instance.inventory.Hide();

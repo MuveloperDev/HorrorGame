@@ -65,6 +65,74 @@ MonoBehaviour:
     m_Address: Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Regular SDF.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 4ded4dff9b3f176459495305d88f51fb
+    m_Address: Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Bold.ttf
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b0911d4300da3a047a8c78dfa5b6f1c0
+    m_Address: Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Light.ttf
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bf777b808377769499d2c9b2eab69a73
+    m_Address: Assets/Resources/Fonts/En/HorrorFonts/Roboto-Regular.ttf
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b13e6051b8e4bfa4f8aeba61b8f58f9d
+    m_Address: Assets/Resources/Images/ISTJ/Default_ova_anime_screencap_dvd_screengrab_kyoto_animation_s_0
+      (1).jpg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6948b26368c289d4d91587c92fbb10d7
+    m_Address: Assets/Resources/Images/ISTJ/Default_ova_anime_screencap_dvd_screengrab_kyoto_animation_s_0.jpg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c4656bbe5e0c2c445ba862e4c26e78ee
+    m_Address: Assets/Resources/Images/ISTJ/Default_ova_anime_screencap_dvd_screengrab_kyoto_animation_s_1
+      (1).jpg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0feab1f65058c2f4fa732d43042a6127
+    m_Address: Assets/Resources/Images/ISTJ/Default_ova_anime_screencap_dvd_screengrab_kyoto_animation_s_1
+      (2).jpg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f01d4e59f2931b54ca3e1f071071614c
+    m_Address: Assets/Resources/Images/ISTJ/Default_ova_anime_screencap_dvd_screengrab_kyoto_animation_s_1.jpg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 548028315c2e5db4c97872ababcfff4f
+    m_Address: Assets/Resources/Images/ISTJ/Default_ova_anime_screencap_dvd_screengrab_kyoto_animation_s_2.jpg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 92cc36449c7836e489fe91c21f4879f4
+    m_Address: Assets/Resources/Images/ISTJ/Default_ova_anime_screencap_dvd_screengrab_kyoto_animation_s_3
+      (1).jpg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b91076cb0e97e6546991a15564d97432
+    m_Address: Assets/Resources/Images/ISTJ/Default_ova_anime_screencap_dvd_screengrab_kyoto_animation_s_3.jpg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d4b8ece15494ef44cae9e7e4054ebc4c
+    m_Address: Assets/Resources/Sounds/FX_Sounds/Background Ambient.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 24f1cc8c71603e541a1e39311249eb1d
+    m_Address: Assets/Resources/Sounds/FX_Sounds/Click.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 75112a4d442e014409ca4d07dfd873e4
+    m_Address: Assets/Resources/Sounds/FX_Sounds/Hover.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 34d5c88dd9c56474bb619c26abb98843
+    m_Address: Assets/Resources/Sounds/FX_Sounds/Melting Transition.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 62c4315d3aaef8642b2a6a2cf016e38a
+    m_Address: Assets/Resources/Sounds/FX_Sounds/Notification.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3f318c42e1aa6ed4e9a142645aa54c32, type: 2}
   m_SchemaSet:

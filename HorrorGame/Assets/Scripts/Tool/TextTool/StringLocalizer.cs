@@ -2,7 +2,9 @@ using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 public enum ETMPColorType
 {
     PRIMARY,
@@ -70,7 +72,7 @@ public class StringLocalizer : MonoBehaviour
         {
             UpdateString(_stringId);
         }
-        await UpdateText();
+        await UpdateOptions();
     }
 
     public void UpdateString(int id)
@@ -94,6 +96,8 @@ public class StringLocalizer : MonoBehaviour
         }
     }
 
+
+
     public async void UpdateLanguage(ELanguage eLanguage)
     {
         switch (eLanguage)
@@ -112,11 +116,19 @@ public class StringLocalizer : MonoBehaviour
                 Debug.LogError("Invaild language..");
                 break;
         }
-        await UpdateText();
+        await UpdateOptions();
         //_text.font = StringLocalizerManager.Instance.fontAsset;
     }
 
-    async UniTask UpdateText()
+    async UniTask UpdateOptions()
+    {
+        UpdateColor();
+
+        _text.font = await ResourcesManager.Instance.GetTMPFont(_fontType);
+        _font = _text.font;
+    }
+
+    private void UpdateColor()
     {
         if (keepAlphaValue == false)
         {
@@ -172,8 +184,78 @@ public class StringLocalizer : MonoBehaviour
                     break;
             }
         }
+    }
 
-        _text.font = await ResourcesManager.Instance.GetTMPFont(_fontType);
-        _font = _text.font;
+#if UNITY_EDITOR
+
+    public ELanguage languageForTest = ELanguage.En;
+    public int GetStringID() => _stringId;
+
+    public void UpdateStringToInspector(int id)
+    {
+        JsonLoader loader = new JsonLoader();
+        loader.Load();
+
+        _stringId = id;
+        switch (languageForTest)
+        {
+            case ELanguage.En:
+                {
+                    _text.text = StringData.table[id].En.Replace("\\n", "\n");
+                }
+                break;
+            case ELanguage.Kr:
+                {
+                    _text.text = StringData.table[id].Kr.Replace("\\n", "\n"); ;
+                }
+                break;
+        }
+
+        UpdateColor();
+        _text.font = ResourcesManager.GetTMPFontEditor(_fontType, languageForTest);
+    }
+
+
+#endif
+}
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(StringLocalizer))]
+public class StringLocalizerEditor : Editor
+{
+    StringLocalizer stringLocalizer = null;
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        stringLocalizer = (StringLocalizer)target;
+        DrawUpdateText();
+
+    }
+
+    private void DrawUpdateText()
+    {
+        GUILayout.Space(20);
+        DrawLabel("[ APPLY ]");
+        GUILayout.Space(10);
+        stringLocalizer.languageForTest = (ELanguage)EditorGUILayout.EnumPopup("Language For Test", stringLocalizer.languageForTest);
+        if (GUILayout.Button("[ UPDATE TEXT ]"))
+        {
+            stringLocalizer.UpdateStringToInspector(stringLocalizer.GetStringID());
+        }
+    }
+
+    private void DrawLabel(string text, int fontSize = 14, FontStyle fontStyle = FontStyle.Bold, Color fontColor = default, TextAnchor textAnchor = TextAnchor.MiddleCenter)
+    {
+        GUIStyle labelStyle = new GUIStyle(GUI.skin.label);
+        labelStyle.fontSize = fontSize; // 폰트 크기
+        labelStyle.fontStyle = fontStyle; // 폰트 스타일
+        labelStyle.normal.textColor = fontColor != default ? fontColor : Color.white;
+        labelStyle.hover.textColor = fontColor != default ? fontColor : Color.white;
+        labelStyle.active.textColor = fontColor != default ? fontColor : Color.white;
+        labelStyle.focused.textColor = fontColor != default ? fontColor : Color.white;
+        labelStyle.alignment = textAnchor; // 텍스트 정렬
+        GUILayout.Label(text, labelStyle);
     }
 }
+#endif

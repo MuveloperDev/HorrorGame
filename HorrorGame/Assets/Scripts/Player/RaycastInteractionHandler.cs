@@ -8,13 +8,17 @@ public class RaycastInteractionHandler : MonoBehaviour
     [SerializeField] private float raycastRange; // Raycast °Å¸®
     [SerializeField] private RaycastHit? hit = null;
     [SerializeField] private IInteractive curInteractObject = null;
-
+    [SerializeField] private FristPersonController playerController = null;
     private void Awake()
     {
         raycastRange = 3f;
+        playerController = GetComponent<FristPersonController>();
     }
     void Update()
     {
+        if (!playerController.isUpdate)
+            return;
+
         PerformRaycast();
     }
 

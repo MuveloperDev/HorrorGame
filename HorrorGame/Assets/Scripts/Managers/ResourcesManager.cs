@@ -5,26 +5,22 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.U2D;
+using Enum;
 using EResourceScope = Enum.EResourceScope;
-public class ResourcesManager : Singleton<ResourcesManager>
+public partial class ResourcesManager : Singleton<ResourcesManager>
 {
     public ResourcesManager() { }
     ~ResourcesManager() { }
 
     private Dictionary<EResourceScope, List<object>> handles = new();
     private Dictionary<string, object> loadedHandles = new();
-    private Dictionary<ELanguage, Dictionary<ETMPFontType, TMP_FontAsset>> _fontDictionary = new();
+    private Dictionary<ELanguage, Dictionary<ETMPFontType, TMP_FontAsset>> _fontDic = new();
+    private Dictionary<ESoundTypes, Dictionary<ESoundsType_Button, AudioClip>> _audioClipsDic = new();
+
     protected override void Initialize()
     {
         base.Initialize();
-        foreach (var scope in System.Enum.GetValues(typeof(EResourceScope)))
-        {
-            handles[(EResourceScope)scope] = new List<object>();
-        }
-        foreach (var language in System.Enum.GetValues(typeof(ELanguage)))
-        {
-            _fontDictionary[(ELanguage)language] = new();
-        }
+        AllocatedDictionaries();
     }
 
     protected override void Dispose()
@@ -36,6 +32,23 @@ public class ResourcesManager : Singleton<ResourcesManager>
         handles = null;
     }
 
+    private void AllocatedDictionaries()
+    {
+        foreach (var scope in System.Enum.GetValues(typeof(EResourceScope)))
+        {
+            handles[(EResourceScope)scope] = new List<object>();
+        }
+        foreach (var language in System.Enum.GetValues(typeof(ELanguage)))
+        {
+            _fontDic[(ELanguage)language] = new();
+        }
+        foreach (var soundType in System.Enum.GetValues(typeof(ESoundTypes)))
+        {
+            ESoundTypes type = (ESoundTypes)soundType;
+            if (type is ESoundTypes.None) continue;
+            _audioClipsDic[type] = new();
+        }
+    }
     private void ReleaseAll()
     {
         foreach (var list in handles.Values)
@@ -46,6 +59,7 @@ public class ResourcesManager : Singleton<ResourcesManager>
             }
         }
     }
+
 
     public void ReleaseScope(EResourceScope scope)
     {
@@ -210,6 +224,7 @@ public class ResourcesManager : Singleton<ResourcesManager>
         return null;
     }
 
+    #region [ Sprite ]
     public async UniTask<Sprite> GetSprite(string atlasPath, string spriteName)
     {
         SpriteAtlas atlas = null;
@@ -258,12 +273,14 @@ public class ResourcesManager : Singleton<ResourcesManager>
 
         return atlas;
     }
-    
+    #endregion
+
+    #region [ Font ]
     public async UniTask<TMP_FontAsset> GetTMPFont(ETMPFontType type)
     {
-       
-        if (_fontDictionary[StringLocalizerManager.Instance.currentLanguage].ContainsKey(type))
-            return _fontDictionary[StringLocalizerManager.Instance.currentLanguage][type];
+
+        if (_fontDic[StringLocalizerManager.Instance.currentLanguage].ContainsKey(type))
+            return _fontDic[StringLocalizerManager.Instance.currentLanguage][type];
 
         TMP_FontAsset fontAsset = null;
         switch (StringLocalizerManager.Instance.currentLanguage)
@@ -311,7 +328,112 @@ public class ResourcesManager : Singleton<ResourcesManager>
                 break;
         }
 
-        _fontDictionary[StringLocalizerManager.Instance.currentLanguage][type] = fontAsset;
+        _fontDic[StringLocalizerManager.Instance.currentLanguage][type] = fontAsset;
         return fontAsset;
     }
+    #endregion
+
+    #region [ Audio ]
+    public AudioClip GetAudioClip(ESoundTypes st, int st_category)
+    {
+        switch (st)
+        {
+            case ESoundTypes.None:
+                break;
+            case ESoundTypes.In:
+                {
+                    ESoundsType_In type = (ESoundsType_In)st_category;
+                    //[]
+                }
+                break;
+            case ESoundTypes.Button:
+                {
+                    ESoundsType_Button type = (ESoundsType_Button)st_category;
+                    var audioClip = _audioClipsDic[ESoundTypes.Button][type];
+                    if (audioClip == null)
+                    {
+                        Debug.LogError($"[Null Exception] {type} audio clip is null.");
+                        return null;
+                    }
+
+                    return audioClip;
+                }
+        }
+        return null;
+
+    }
+    #endregion
+
+    #region [ Editor ]
+#if UNITY_EDITOR
+    public static TMP_FontAsset GetTMPFontEditor(ETMPFontType type, ELanguage language)
+    {
+        TMP_FontAsset fontAsset = null;
+        switch (language)
+        {
+            case ELanguage.En:
+                {
+                    switch (type)
+                    {
+                        case ETMPFontType.LIGHT:
+                            fontAsset = LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Light SDF.asset");
+                            break;
+                        case ETMPFontType.MEDIUM:
+                            fontAsset = LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Regular SDF.asset");
+                            break;
+                        case ETMPFontType.BOLD:
+                            fontAsset = LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Bold SDF.asset");
+                            break;
+                        case ETMPFontType.ALTERNATIVE_1:
+                            fontAsset = LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/En/HorrorFonts/Roboto-Regular SDF.asset");
+                            break;
+                    }
+                }
+                break;
+            case ELanguage.Kr:
+                {
+                    switch (type)
+                    {
+                        case ETMPFontType.LIGHT:
+                            fontAsset = LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/Kr/Godo/GodoM_SDF.asset");
+                            break;
+                        case ETMPFontType.MEDIUM:
+                            fontAsset = LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/Kr/Godo/GodoB_SDF.asset");
+                            break;
+                        case ETMPFontType.BOLD:
+                            fontAsset = LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/Kr/Godo/GodoB_SDF.asset");
+                            break;
+                        case ETMPFontType.ALTERNATIVE_1:
+                            fontAsset = LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/Kr/Godo/GodoM_SDF.asset");
+                            break;
+                    }
+
+                }
+                break;
+            default:
+                break;
+        }
+
+        return fontAsset;
+    }
+
+    public static T LoadAssetAsyncGenericEditor<T>(string path) where T : class
+    {
+        T type = null;
+        Addressables.LoadAssetAsync<T>(path).Completed += handle =>
+        {
+            if (handle.Status == AsyncOperationStatus.Succeeded)
+            {
+                type = handle.Result;
+            }
+            else
+            {
+                Debug.LogError("Failed to load asset: " + path);
+            }
+        };
+
+        return type;
+    }
+#endif
+    #endregion
 }

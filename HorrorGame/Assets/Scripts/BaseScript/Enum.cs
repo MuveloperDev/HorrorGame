@@ -29,8 +29,13 @@ namespace Enum
 		InGameScene,
         Max
     }
-
-    public enum ESoundsType 
+    public enum ESoundTypes
+    {
+        None,
+        In,
+        Button,
+    }
+    public enum ESoundsType_In 
     { 
         None = 0,
         Store,
@@ -38,7 +43,12 @@ namespace Enum
         Inactive,
         Always,
     }
-
+    public enum ESoundsType_Button
+    {
+        None = 0,
+        Hover,
+        Click
+    }
     public enum EAudioPlayType
     {
         OneShot = 0,

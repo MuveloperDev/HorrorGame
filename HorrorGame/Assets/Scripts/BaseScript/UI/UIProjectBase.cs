@@ -43,6 +43,10 @@ public class UIProjectBase : UIBase
     protected override void AfterHide()
     {
         base.AfterHide();
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
+        FristPersonController.instance.isUpdate = true;
     }
+
+
+    // Todo 마우스 만들어서 확인 해야함.
 }

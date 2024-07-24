@@ -40,9 +40,14 @@ public class BuildCustomWindow : EditorWindow
     public enum EResourceType
     {
         Min = 0,
-        Prefab,
-        TMP_FontAsset,
-        SpriteAtlas,
+        Prefab, // GameObject 프리팹
+        TMP_FontAsset, // 텍스트 메쉬 프로 폰트 에셋
+        SpriteAtlas, // 스프라이트 아틀라스
+        AudioClip, // 오디오 클립
+        Texture2D, // 텍스처
+        Material, // 재질
+        Shader, // 셰이더
+        ScriptableObject, // 스크립터블 오브젝트
         Max
     }
     public static void AssignPrefabsToAddressables()
