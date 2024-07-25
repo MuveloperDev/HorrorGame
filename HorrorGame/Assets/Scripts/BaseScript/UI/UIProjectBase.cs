@@ -19,6 +19,9 @@ public class UIProjectBase : UIBase
 
     [Header("Buttons")]
     [SerializeField] private UIButtonBase _btnClose;
+
+
+    public Material dissolveMaterial;
     protected override void Awake()
     {
         base.Awake();
@@ -33,6 +36,7 @@ public class UIProjectBase : UIBase
     {
         base.AfterShow();
         _animator.Play(EMainPanel.Show.ToString(), 0);
+        _=StartDissolveEffect();
     }
     protected async override UniTask BeforeHide()
     {
@@ -50,7 +54,40 @@ public class UIProjectBase : UIBase
         //Cursor.lockState = CursorLockMode.Locked;
         FristPersonController.instance.isUpdate = true;
     }
+    private float dissolveThreshold = 0f; // 초기값
+    private bool isIncreasing = true; // 값 증가 여부를 판단하는 플래그
 
+    // 애니메이션 속도
+    public float animationDuration = 1f;
+    private async UniTaskVoid StartDissolveEffect()
+    {
+        while (true)
+        {
+            float elapsedTime = 0f;
+
+            while (elapsedTime < animationDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                float t = elapsedTime / animationDuration;
+
+                if (isIncreasing)
+                {
+                    dissolveThreshold = Mathf.Lerp(0f, 1f, t);
+                }
+                else
+                {
+                    dissolveThreshold = Mathf.Lerp(1f, 0f, t);
+                }
+
+                // 머티리얼의 DissolveThreshold 값 업데이트
+                dissolveMaterial.SetFloat("_DissolveThreshold", dissolveThreshold);
+                Debug.Log($"_DissolveThreshold: {dissolveThreshold}");
+                await UniTask.Yield(PlayerLoopTiming.Update);
+            }
+
+            isIncreasing = !isIncreasing;
+        }
+    }
 
     // Todo 마우스 만들어서 확인 해야함.
 }
