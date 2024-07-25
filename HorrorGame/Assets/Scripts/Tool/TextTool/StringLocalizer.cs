@@ -25,6 +25,13 @@ public enum ETMPFontType
     //ALTERNATIVE_2
 }
 
+public enum ETextCapitalize
+{
+    None,
+    UPPER,
+    LOWER
+}
+
 public class StringLocalizer : MonoBehaviour
 {
 
@@ -47,6 +54,7 @@ public class StringLocalizer : MonoBehaviour
     [SerializeField] private bool keepAlphaValue = false;
     [SerializeField] private ETMPColorType colorType;
     [SerializeField] private ETMPFontType _fontType;
+    [SerializeField] private ETextCapitalize _capitalize;
     private void Awake()
     {
         _text = GetComponent<TextMeshProUGUI>();
@@ -78,20 +86,33 @@ public class StringLocalizer : MonoBehaviour
     public void UpdateString(int id)
     {
         _stringId = id;
+        string text = string.Empty;
         switch (StringLocalizerManager.Instance.currentLanguage)
         {
             case ELanguage.En:
                 {
-                    _text.text = StringData.table[id].En.Replace("\\n", "\n");
+                    text = StringData.table[id].En.Replace("\\n", "\n");
                 }
                 break;
             case ELanguage.Kr:
                 {
-                    _text.text = StringData.table[id].Kr.Replace("\\n", "\n"); ;
+                    text = StringData.table[id].Kr.Replace("\\n", "\n"); ;
                 }
                 break;
             default:
                 Debug.LogError("Invaild language..");
+                break;
+        }
+        switch (_capitalize)
+        {
+            case ETextCapitalize.None:
+                _text.text = text;
+                break;
+            case ETextCapitalize.UPPER:
+                _text.text = text.ToUpper();
+                break;
+            case ETextCapitalize.LOWER:
+                _text.text = text.ToLower();
                 break;
         }
     }
@@ -188,31 +209,51 @@ public class StringLocalizer : MonoBehaviour
 
 #if UNITY_EDITOR
 
-    public ELanguage languageForTest = ELanguage.En;
+    private ELanguage languageForTest = ELanguage.En;
     public int GetStringID() => _stringId;
+    public void SetLanguageForTest(ELanguage value) => languageForTest = value;
+    public ELanguage GetLanguageForTest() => languageForTest;
 
-    public void UpdateStringToInspector(int id)
+    public async void UpdateStringToInspector(int id)
     {
         JsonLoader loader = new JsonLoader();
         loader.Load();
 
         _stringId = id;
+        string text = string.Empty;
         switch (languageForTest)
         {
             case ELanguage.En:
                 {
-                    _text.text = StringData.table[id].En.Replace("\\n", "\n");
+                    text = StringData.table[id].En.Replace("\\n", "\n");
                 }
                 break;
             case ELanguage.Kr:
                 {
-                    _text.text = StringData.table[id].Kr.Replace("\\n", "\n"); ;
+                    text = StringData.table[id].Kr.Replace("\\n", "\n"); ;
                 }
+                break;
+            default:
+                Debug.LogError("Invaild language..");
+                break;
+        }
+        switch (_capitalize)
+        {
+            case ETextCapitalize.None:
+                _text.text = text;
+                break;
+            case ETextCapitalize.UPPER:
+                _text.text = text.ToUpper();
+                break;
+            case ETextCapitalize.LOWER:
+                _text.text = text.ToLower();
                 break;
         }
 
         UpdateColor();
-        _text.font = ResourcesManager.GetTMPFontEditor(_fontType, languageForTest);
+        _text.font =  await ResourcesManager.GetTMPFontEditor(_fontType, languageForTest);
+        _font = _text.font;
+        Debug.Log("[StringLocalizer] - Complete update text!");
     }
 
 
@@ -238,7 +279,7 @@ public class StringLocalizerEditor : Editor
         GUILayout.Space(20);
         DrawLabel("[ APPLY ]");
         GUILayout.Space(10);
-        stringLocalizer.languageForTest = (ELanguage)EditorGUILayout.EnumPopup("Language For Test", stringLocalizer.languageForTest);
+        stringLocalizer.SetLanguageForTest((ELanguage)EditorGUILayout.EnumPopup("Language For Test", stringLocalizer.GetLanguageForTest()));
         if (GUILayout.Button("[ UPDATE TEXT ]"))
         {
             stringLocalizer.UpdateStringToInspector(stringLocalizer.GetStringID());

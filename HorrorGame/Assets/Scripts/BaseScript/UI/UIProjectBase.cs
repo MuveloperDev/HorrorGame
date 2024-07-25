@@ -16,14 +16,18 @@ public class UIProjectBase : UIBase
     [Header("Sounds")]
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private SerializeDictionary<EMainPanel, AudioClip> _audioClip = new();
+
+    [Header("Buttons")]
+    [SerializeField] private UIButtonBase _btnClose;
     protected override void Awake()
     {
         base.Awake();
         _cts = new();
         _cts.RegisterRaiseCancelOnDestroy(this);
         _animator = GetComponent<Animator>();
-        IngameUIManager.Instance.inventory = this;
+        IngameUIManager.Instance.mainPanel = this;
         gameObject.SetActive(false);
+        _btnClose.onPointerUpEvent += (pointerEventData) => Hide();
     }
     protected override void AfterShow()
     {

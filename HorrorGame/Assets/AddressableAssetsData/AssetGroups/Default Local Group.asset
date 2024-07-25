@@ -77,42 +77,6 @@ MonoBehaviour:
     m_Address: Assets/Resources/Fonts/En/HorrorFonts/Roboto-Regular.ttf
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: b13e6051b8e4bfa4f8aeba61b8f58f9d
-    m_Address: Assets/Resources/Images/ISTJ/Default_ova_anime_screencap_dvd_screengrab_kyoto_animation_s_0
-      (1).jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 6948b26368c289d4d91587c92fbb10d7
-    m_Address: Assets/Resources/Images/ISTJ/Default_ova_anime_screencap_dvd_screengrab_kyoto_animation_s_0.jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: c4656bbe5e0c2c445ba862e4c26e78ee
-    m_Address: Assets/Resources/Images/ISTJ/Default_ova_anime_screencap_dvd_screengrab_kyoto_animation_s_1
-      (1).jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 0feab1f65058c2f4fa732d43042a6127
-    m_Address: Assets/Resources/Images/ISTJ/Default_ova_anime_screencap_dvd_screengrab_kyoto_animation_s_1
-      (2).jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: f01d4e59f2931b54ca3e1f071071614c
-    m_Address: Assets/Resources/Images/ISTJ/Default_ova_anime_screencap_dvd_screengrab_kyoto_animation_s_1.jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 548028315c2e5db4c97872ababcfff4f
-    m_Address: Assets/Resources/Images/ISTJ/Default_ova_anime_screencap_dvd_screengrab_kyoto_animation_s_2.jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 92cc36449c7836e489fe91c21f4879f4
-    m_Address: Assets/Resources/Images/ISTJ/Default_ova_anime_screencap_dvd_screengrab_kyoto_animation_s_3
-      (1).jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: b91076cb0e97e6546991a15564d97432
-    m_Address: Assets/Resources/Images/ISTJ/Default_ova_anime_screencap_dvd_screengrab_kyoto_animation_s_3.jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: d4b8ece15494ef44cae9e7e4054ebc4c
     m_Address: Assets/Resources/Sounds/FX_Sounds/Background Ambient.wav
     m_ReadOnly: 0
@@ -131,6 +95,26 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 62c4315d3aaef8642b2a6a2cf016e38a
     m_Address: Assets/Resources/Sounds/FX_Sounds/Notification.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 80dca2a8bdf46f143a8ed748f31d7287
+    m_Address: Assets/Resources/Prefabs/UIs/Buttons/Button_Close.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 342966bbf7b4f7a49bf162f0b6b68973
+    m_Address: Assets/Resources/Shaders/UI_DissolveEffect.shadergraph
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 84ca4083d960a8347b60fa98d01a5bbd
+    m_Address: Assets/Resources/Shaders/UI_DissolveMaterial.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3832bd568679f8c429d200ae76d83155
+    m_Address: Assets/Resources/Textures/Noises/UI Dissolve Noise 2.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 56f5a358f165b3e4cbbc4e4f89116855
+    m_Address: Assets/Resources/Textures/Noises/UI Dissolve Noise.png
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

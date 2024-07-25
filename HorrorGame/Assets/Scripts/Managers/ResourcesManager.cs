@@ -17,7 +17,7 @@ public partial class ResourcesManager : Singleton<ResourcesManager>
     private Dictionary<ELanguage, Dictionary<ETMPFontType, TMP_FontAsset>> _fontDic = new();
     private Dictionary<ESoundTypes, Dictionary<ESoundsType_Button, AudioClip>> _audioClipsDic = new();
 
-    protected override void Initialize()
+    protected async override void Initialize()
     {
         base.Initialize();
         AllocatedDictionaries();
@@ -366,7 +366,7 @@ public partial class ResourcesManager : Singleton<ResourcesManager>
 
     #region [ Editor ]
 #if UNITY_EDITOR
-    public static TMP_FontAsset GetTMPFontEditor(ETMPFontType type, ELanguage language)
+    public static async UniTask<TMP_FontAsset> GetTMPFontEditor(ETMPFontType type, ELanguage language)
     {
         TMP_FontAsset fontAsset = null;
         switch (language)
@@ -376,16 +376,16 @@ public partial class ResourcesManager : Singleton<ResourcesManager>
                     switch (type)
                     {
                         case ETMPFontType.LIGHT:
-                            fontAsset = LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Light SDF.asset");
+                            fontAsset = await LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Light SDF.asset");
                             break;
                         case ETMPFontType.MEDIUM:
-                            fontAsset = LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Regular SDF.asset");
+                            fontAsset = await LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Regular SDF.asset");
                             break;
                         case ETMPFontType.BOLD:
-                            fontAsset = LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Bold SDF.asset");
+                            fontAsset = await LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Bold SDF.asset");
                             break;
                         case ETMPFontType.ALTERNATIVE_1:
-                            fontAsset = LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/En/HorrorFonts/Roboto-Regular SDF.asset");
+                            fontAsset = await LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/En/HorrorFonts/Roboto-Regular SDF.asset");
                             break;
                     }
                 }
@@ -395,16 +395,16 @@ public partial class ResourcesManager : Singleton<ResourcesManager>
                     switch (type)
                     {
                         case ETMPFontType.LIGHT:
-                            fontAsset = LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/Kr/Godo/GodoM_SDF.asset");
+                            fontAsset = await LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/Kr/Godo/GodoM_SDF.asset");
                             break;
                         case ETMPFontType.MEDIUM:
-                            fontAsset = LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/Kr/Godo/GodoB_SDF.asset");
+                            fontAsset = await LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/Kr/Godo/GodoB_SDF.asset");
                             break;
                         case ETMPFontType.BOLD:
-                            fontAsset = LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/Kr/Godo/GodoB_SDF.asset");
+                            fontAsset = await LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/Kr/Godo/GodoB_SDF.asset");
                             break;
                         case ETMPFontType.ALTERNATIVE_1:
-                            fontAsset = LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/Kr/Godo/GodoM_SDF.asset");
+                            fontAsset = await LoadAssetAsyncGenericEditor<TMP_FontAsset>("Assets/Resources/Fonts/Kr/Godo/GodoM_SDF.asset");
                             break;
                     }
 
@@ -417,9 +417,10 @@ public partial class ResourcesManager : Singleton<ResourcesManager>
         return fontAsset;
     }
 
-    public static T LoadAssetAsyncGenericEditor<T>(string path) where T : class
+    public static async UniTask<T> LoadAssetAsyncGenericEditor<T>(string path) where T : class
     {
         T type = null;
+        bool isProcessed = false;
         Addressables.LoadAssetAsync<T>(path).Completed += handle =>
         {
             if (handle.Status == AsyncOperationStatus.Succeeded)
@@ -430,8 +431,10 @@ public partial class ResourcesManager : Singleton<ResourcesManager>
             {
                 Debug.LogError("Failed to load asset: " + path);
             }
+            isProcessed = true;
         };
 
+        await UniTask.WaitUntil(() => isProcessed);
         return type;
     }
 #endif

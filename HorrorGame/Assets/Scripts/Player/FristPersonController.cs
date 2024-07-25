@@ -65,13 +65,13 @@ public class FristPersonController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!IngameUIManager.Instance.inventory.isActive)
+            if (!IngameUIManager.Instance.mainPanel.isActive)
             {
-                IngameUIManager.Instance.inventory.Show();
+                IngameUIManager.Instance.mainPanel.Show();
                 isUpdate = false;
                 return;
             }
-            IngameUIManager.Instance.inventory.Hide();
+            IngameUIManager.Instance.mainPanel.Hide();
         }
     }
 

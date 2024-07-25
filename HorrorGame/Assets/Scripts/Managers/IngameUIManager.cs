@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class IngameUIManager : UIManager<IngameUIManager>
 {
-    public UIProjectBase inventory;
+    public UIProjectBase mainPanel;
     private Dictionary<Type, object> _UIDictionary;
 
 

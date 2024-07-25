@@ -21,7 +21,6 @@ public class UIButtonBase : UIEventHandler
     public override void OnPointerEnter(PointerEventData eventData)
     {
         _animator.Play("Highlighted", 0);
-        Debug.Log("Enter");
         _audioSourceController.PlayOneShot(_soundType, (int)ESoundsType_Button.Hover);
         base.OnPointerEnter(eventData);
     }
@@ -29,15 +28,18 @@ public class UIButtonBase : UIEventHandler
     public override void OnPointerExit(PointerEventData eventData)
     {
         _animator.Play("Normal", 0);
-        Debug.Log("Exit");
         base.OnPointerExit(eventData);
     }
 
     public override void OnPointerDown(PointerEventData eventData)
     {
         _animator.Play("Normal", 0);
-        Debug.Log("Click");
         _audioSourceController.PlayOneShot(_soundType, (int)ESoundsType_Button.Click);
         base.OnPointerDown(eventData);
+    }
+    public override void OnPointerUp(PointerEventData eventData)
+    {
+        _animator.Play("Highlighted", 0);
+        base.OnPointerUp(eventData);
     }
 }

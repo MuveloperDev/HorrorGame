@@ -1,17 +1,42 @@
 ﻿[
   {
     "Id": 1,
-    "En": "Description1",
-    "Kr": "설명1"
+    "En": "Title",
+    "Kr": "제목"
   },
   {
     "Id": 2,
-    "En": "Description2",
-    "Kr": "설명2"
+    "En": "New Game",
+    "Kr": "게임 시작"
   },
   {
     "Id": 3,
-    "En": "Description3",
-    "Kr": "설명3"
+    "En": "Option",
+    "Kr": "옵션"
+  },
+  {
+    "Id": 4,
+    "En": "Load",
+    "Kr": "이어하기"
+  },
+  {
+    "Id": 5,
+    "En": "Exit",
+    "Kr": "나가기"
+  },
+  {
+    "Id": 6,
+    "En": "Inventory",
+    "Kr": "인벤토리"
+  },
+  {
+    "Id": 7,
+    "En": "File",
+    "Kr": "파일"
+  },
+  {
+    "Id": 8,
+    "En": "Item",
+    "Kr": "아이템"
   }
 ]

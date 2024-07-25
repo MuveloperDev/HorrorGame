@@ -12,6 +12,7 @@ public class InventorySceneTestManager : MonoBehaviour
         loader.Load();
 
         await UniTask.WaitUntil(()=> true == IngameUIManager.Instance.isInitialized);
+        await ResourcesManager.Instance.LoadResources();
     }
 
     // Update is called once per frame
