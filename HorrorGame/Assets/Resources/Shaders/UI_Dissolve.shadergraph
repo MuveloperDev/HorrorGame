@@ -306,13 +306,13 @@
     "m_DefaultRefNameVersion": 1,
     "m_RefNameGeneratedByDisplayName": "Threshold",
     "m_DefaultReferenceName": "_Threshold",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_GlobalDissolveThreshold",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
     "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
+    "overrideHLSLDeclaration": true,
+    "hlslDeclarationOverride": 1,
     "m_Hidden": false,
     "m_Value": 0.5,
     "m_FloatType": 1,
@@ -461,10 +461,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 0.0,
-            "y": 0.0,
-            "width": 0.0,
-            "height": 0.0
+            "x": 20.0,
+            "y": 311.0,
+            "width": 200.0,
+            "height": 41.0
         }
     },
     "m_Slots": [
@@ -892,10 +892,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -712.9999389648438,
-            "y": 614.0,
-            "width": 128.0,
-            "height": 34.0
+            "x": -714.0000610351563,
+            "y": 637.0000610351563,
+            "width": 118.0,
+            "height": 33.99993896484375
         }
     },
     "m_Slots": [
@@ -1081,10 +1081,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -235.0,
-            "y": 312.0000305175781,
-            "width": 207.99998474121095,
-            "height": 301.9999694824219
+            "x": -270.0,
+            "y": 401.0,
+            "width": 208.0,
+            "height": 302.0
         }
     },
     "m_Slots": [
@@ -1260,7 +1260,7 @@
     "m_ActiveSubTarget": {
         "m_Id": "844934d6b0d54b47a4284840ed31232b"
     },
-    "m_AllowMaterialOverride": false,
+    "m_AllowMaterialOverride": true,
     "m_SurfaceType": 0,
     "m_ZTestMode": 8,
     "m_ZWriteControl": 0,
@@ -1298,7 +1298,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "AlphaClipThreshold",
     "m_StageCapability": 2,
-    "m_Value": 0.5,
+    "m_Value": 0.5400000214576721,
     "m_DefaultValue": 0.5,
     "m_Labels": []
 }
