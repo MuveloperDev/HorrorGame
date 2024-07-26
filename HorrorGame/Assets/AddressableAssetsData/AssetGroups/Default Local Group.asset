@@ -101,14 +101,6 @@ MonoBehaviour:
     m_Address: Assets/Resources/Prefabs/UIs/Buttons/Button_Close.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 342966bbf7b4f7a49bf162f0b6b68973
-    m_Address: Assets/Resources/Shaders/UI_DissolveEffect.shadergraph
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 84ca4083d960a8347b60fa98d01a5bbd
-    m_Address: Assets/Resources/Shaders/UI_DissolveMaterial.mat
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 3832bd568679f8c429d200ae76d83155
     m_Address: Assets/Resources/Textures/Noises/UI Dissolve Noise 2.png
     m_ReadOnly: 0
