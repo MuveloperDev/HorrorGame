@@ -21,7 +21,7 @@ public class UIBase : MonoBehaviour
 
     protected async virtual UniTask BeforeShow()
     { }
-    protected virtual void AfterShow()
+    protected async virtual UniTask AfterShow()
     { }
     public virtual async void Show()
     {
@@ -30,7 +30,7 @@ public class UIBase : MonoBehaviour
         await BeforeShow();
         gameObject.SetActive(true);
         isActive = true;
-        AfterShow();
+        _=AfterShow();
     }
     protected async virtual UniTask BeforeHide()
     { }

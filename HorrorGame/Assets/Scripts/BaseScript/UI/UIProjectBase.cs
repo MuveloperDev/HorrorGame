@@ -10,6 +10,11 @@ using UnityEngine;
 [RequireComponent(typeof(Animator), typeof(CanvasGroup))]
 public class UIProjectBase : UIBase
 {
+    public enum PanelActiveType
+    {
+        Dissolve,
+        Animation
+    }
     [Header("Animation")]
     [SerializeField] private Animator _animator;
 
@@ -20,8 +25,10 @@ public class UIProjectBase : UIBase
     [Header("Buttons")]
     [SerializeField] private UIButtonBase _btnClose;
 
+    [Header("Main Panel")]
+    [SerializeField] private PanelActiveType _panelActiveType;
+    [SerializeField] private DissolveEffectHandler_Edge _mainPanelDissolve;
 
-    public Material dissolveMaterial;
     protected override void Awake()
     {
         base.Awake();
@@ -31,21 +38,52 @@ public class UIProjectBase : UIBase
         IngameUIManager.Instance.mainPanel = this;
         gameObject.SetActive(false);
         _btnClose.onPointerUpEvent += (pointerEventData) => Hide();
+        switch (_panelActiveType)
+        {
+            case PanelActiveType.Dissolve:
+                _animator.enabled = false;
+                break;
+            case PanelActiveType.Animation:
+                if (_mainPanelDissolve.progress != 0)
+                    _mainPanelDissolve.progress = 0;
+                break;
+        }
     }
-    protected override void AfterShow()
+    protected async override UniTask AfterShow()
     {
-        base.AfterShow();
-        _animator.Play(EMainPanel.Show.ToString(), 0);
+        await base.AfterShow();
+        switch (_panelActiveType)
+        {
+            case PanelActiveType.Dissolve:
+                if (null != _mainPanelDissolve)
+                    await _mainPanelDissolve.DissolveIn();
+                break;
+            case PanelActiveType.Animation:
+
+                _animator.Play(EMainPanel.Show.ToString(), 0);
+                break;
+        }
         //_=StartDissolveEffect();
+        //AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+        //await UniTask.WaitUntil(() => !_animator.GetCurrentAnimatorStateInfo(0).IsName(EMainPanel.Show.ToString()) || _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
     }
     protected async override UniTask BeforeHide()
     {
         // Hide 애니메이션 이후로 처리
         await base.BeforeHide();
-        _animator.Play(EMainPanel.Hide.ToString(), 0);
-
-        AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
-        await UniTask.WaitUntil(() => !_animator.GetCurrentAnimatorStateInfo(0).IsName(EMainPanel.Hide.ToString()) || _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+        switch (_panelActiveType)
+        {
+            case PanelActiveType.Dissolve:
+                if (null != _mainPanelDissolve)
+                    await _mainPanelDissolve.DissolveOut();
+                break;
+            case PanelActiveType.Animation:
+                _animator.Play(EMainPanel.Hide.ToString(), 0);
+                AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+                await UniTask.WaitUntil(() => !_animator.GetCurrentAnimatorStateInfo(0).IsName(EMainPanel.Hide.ToString()) || _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+                break;
+        }
+       
     }
 
     protected override void AfterHide()
