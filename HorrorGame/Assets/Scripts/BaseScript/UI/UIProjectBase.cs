@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks.Triggers;
 using Enum;
 using System;
 using System.Collections;
@@ -34,6 +35,7 @@ public class UIProjectBase : UIBase
         base.Awake();
         _cts = new();
         _cts.RegisterRaiseCancelOnDestroy(this);
+        Hide();
         _animator = GetComponent<Animator>();
         IngameUIManager.Instance.mainPanel = this;
         gameObject.SetActive(false);
@@ -42,6 +44,9 @@ public class UIProjectBase : UIBase
         {
             case PanelActiveType.Dissolve:
                 _animator.enabled = false;
+                CanvasGroup canvasGroup = GetComponent<CanvasGroup>();
+                if (null != canvasGroup)
+                    canvasGroup.alpha = 1.0f;
                 break;
             case PanelActiveType.Animation:
                 if (_mainPanelDissolve.progress != 0)
