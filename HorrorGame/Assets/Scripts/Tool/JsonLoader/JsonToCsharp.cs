@@ -82,6 +82,10 @@ public class JsonToCSharp : EditorWindow
             {
                 type = "float";
             }
+            else if (property.Value.Type == JTokenType.Boolean)
+            {
+                type = "bool";
+            }
             else if (property.Value.Type == JTokenType.Array)
             {
                 type = GetArrayType((JArray)property.Value);
@@ -121,6 +125,10 @@ public class {className}
         else if (arrayType == JTokenType.String)
         {
             return "string[]";
+        }
+        else if (arrayType == JTokenType.Boolean)
+        {
+            return "bool[]";
         }
         else
         {

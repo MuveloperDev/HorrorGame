@@ -11,7 +11,7 @@ public class TestData
     public int[] UnlockLevel3;
     public int[][] UnlockLevel4;
     public int[][][] UnlockLevel5;
-    public object BoolData;
+    public bool BoolData;
     public float FloatData;
     public float[] UnlockLevel6;
     public static Dictionary<int, TestData> table = new Dictionary<int, TestData> ();   
