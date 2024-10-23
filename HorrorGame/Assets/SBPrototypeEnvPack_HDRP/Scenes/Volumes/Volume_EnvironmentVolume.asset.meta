@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f824c188c66289644b3663d51f30dd02
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 190836
+  packageName: 'SummonBox: Prototype Enviroment Asset Pack - HDRP'
+  packageVersion: 1.0
+  assetPath: Assets/SBPrototypeEnvPack_HDRP/Scenes/Volumes/Volume_EnvironmentVolume.asset
+  uploadId: 421453
