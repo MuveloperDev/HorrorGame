@@ -18,7 +18,7 @@ namespace Michsky.UI.Dark
 
         void Start()
         {
-            if (GraphicsSettings.renderPipelineAsset != null)
+            if (GraphicsSettings.defaultRenderPipeline != null)
                 return;
 
             if (customProperty == null)
@@ -65,7 +65,7 @@ namespace Michsky.UI.Dark
 
         public void BlurInAnim()
         {
-            if (GraphicsSettings.renderPipelineAsset != null)
+            if (GraphicsSettings.defaultRenderPipeline != null)
                 return;
 
             if (gameObject.activeSelf == false)
@@ -77,7 +77,7 @@ namespace Michsky.UI.Dark
 
         public void BlurOutAnim()
         {
-            if (GraphicsSettings.renderPipelineAsset != null || gameObject.activeInHierarchy == false)
+            if (GraphicsSettings.defaultRenderPipeline != null || gameObject.activeInHierarchy == false)
                 return;
 
             StopCoroutine("BlurIn");

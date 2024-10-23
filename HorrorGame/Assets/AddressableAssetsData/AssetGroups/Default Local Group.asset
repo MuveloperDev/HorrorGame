@@ -13,105 +13,126 @@ MonoBehaviour:
   m_Name: Default Local Group
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
-  m_Data:
-    m_SerializedData: []
   m_GUID: 8c4575ae0b415884695dccd0e51420ee
   m_SerializeEntries:
-  - m_GUID: 57602cb50707781488a72066312d6764
-    m_Address: Assets/Resources/Atlas/New Sprite Atlas.spriteatlas
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: dfd1d4557d6eb9c4cbe0d4f4439cf307
-    m_Address: Assets/Resources/Fonts/En/Rubik/Rubik-Regular SDF.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 1f7634b4b193f434ea07118525ee2291
-    m_Address: Assets/Resources/Fonts/En/Rubik/Rubik-SemiBold SDF.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 7ac1aabab628d10429546546f6a42b54
-    m_Address: Assets/Resources/Fonts/Kr/Godo/GodoB_SDF.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: ef04bd523f133fe4ba07abb94d7d05af
-    m_Address: Assets/Resources/Fonts/Kr/Godo/GodoM_SDF.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: d7db25562fe5a0446bf1392a1c8988a8
-    m_Address: Assets/Resources/Prefabs/DialogBox.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: fdd96b756e2cf6c43ad3876e02437a46
-    m_Address: Assets/Resources/Prefabs/Title.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: fe2be36cdd0e2064aaaf01c0d430fe5f
-    m_Address: Materials/OutlineMaterial
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 16f0dea6460c42a4aa85b415ffc1e1f4
     m_Address: Assets/Resources/Fonts/En/HorrorFonts/Roboto-Regular SDF.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1777a3f3a3df9a542a29c5386280bdda
     m_Address: Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Bold SDF.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 57392bee0bfba204d9d50981059601bc
-    m_Address: Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Light SDF.asset
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1f7634b4b193f434ea07118525ee2291
+    m_Address: Assets/Resources/Fonts/En/Rubik/Rubik-SemiBold SDF.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 72d378f09c9b977459878c156d9e2a44
-    m_Address: Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Regular SDF.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 4ded4dff9b3f176459495305d88f51fb
-    m_Address: Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Bold.ttf
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: b0911d4300da3a047a8c78dfa5b6f1c0
-    m_Address: Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Light.ttf
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: bf777b808377769499d2c9b2eab69a73
-    m_Address: Assets/Resources/Fonts/En/HorrorFonts/Roboto-Regular.ttf
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: d4b8ece15494ef44cae9e7e4054ebc4c
-    m_Address: Assets/Resources/Sounds/FX_Sounds/Background Ambient.wav
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 24f1cc8c71603e541a1e39311249eb1d
     m_Address: Assets/Resources/Sounds/FX_Sounds/Click.wav
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 75112a4d442e014409ca4d07dfd873e4
-    m_Address: Assets/Resources/Sounds/FX_Sounds/Hover.wav
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 34d5c88dd9c56474bb619c26abb98843
     m_Address: Assets/Resources/Sounds/FX_Sounds/Melting Transition.wav
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 62c4315d3aaef8642b2a6a2cf016e38a
-    m_Address: Assets/Resources/Sounds/FX_Sounds/Notification.wav
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 80dca2a8bdf46f143a8ed748f31d7287
-    m_Address: Assets/Resources/Prefabs/UIs/Buttons/Button_Close.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3832bd568679f8c429d200ae76d83155
     m_Address: Assets/Resources/Textures/Noises/UI Dissolve Noise 2.png
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4ded4dff9b3f176459495305d88f51fb
+    m_Address: Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Bold.ttf
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 56f5a358f165b3e4cbbc4e4f89116855
     m_Address: Assets/Resources/Textures/Noises/UI Dissolve Noise.png
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 57392bee0bfba204d9d50981059601bc
+    m_Address: Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Light SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 57602cb50707781488a72066312d6764
+    m_Address: Assets/Resources/Atlas/New Sprite Atlas.spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 62c4315d3aaef8642b2a6a2cf016e38a
+    m_Address: Assets/Resources/Sounds/FX_Sounds/Notification.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 72d378f09c9b977459878c156d9e2a44
+    m_Address: Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Regular SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 75112a4d442e014409ca4d07dfd873e4
+    m_Address: Assets/Resources/Sounds/FX_Sounds/Hover.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7ac1aabab628d10429546546f6a42b54
+    m_Address: Assets/Resources/Fonts/Kr/Godo/GodoB_SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 80dca2a8bdf46f143a8ed748f31d7287
+    m_Address: Assets/Resources/Prefabs/UIs/Buttons/Button_Close.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b0911d4300da3a047a8c78dfa5b6f1c0
+    m_Address: Assets/Resources/Fonts/En/HorrorFonts/Larke Sans Light.ttf
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bf777b808377769499d2c9b2eab69a73
+    m_Address: Assets/Resources/Fonts/En/HorrorFonts/Roboto-Regular.ttf
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4b8ece15494ef44cae9e7e4054ebc4c
+    m_Address: Assets/Resources/Sounds/FX_Sounds/Background Ambient.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d7db25562fe5a0446bf1392a1c8988a8
+    m_Address: Assets/Resources/Prefabs/DialogBox.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dfd1d4557d6eb9c4cbe0d4f4439cf307
+    m_Address: Assets/Resources/Fonts/En/Rubik/Rubik-Regular SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef04bd523f133fe4ba07abb94d7d05af
+    m_Address: Assets/Resources/Fonts/Kr/Godo/GodoM_SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fdd96b756e2cf6c43ad3876e02437a46
+    m_Address: Assets/Resources/Prefabs/Title.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fe2be36cdd0e2064aaaf01c0d430fe5f
+    m_Address: Materials/OutlineMaterial
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3f318c42e1aa6ed4e9a142645aa54c32, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 2e7e5caf9ab02cd4aba46a62277439e2, type: 2}
     - {fileID: 11400000, guid: 62d15f51c6c954449995724a11cae781, type: 2}
+    - {fileID: 11400000, guid: 2e7e5caf9ab02cd4aba46a62277439e2, type: 2}
