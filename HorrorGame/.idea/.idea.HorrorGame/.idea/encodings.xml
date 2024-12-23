@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/Assets/Scripts/BaseScript/Character/AnimationController.cs" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/Assets/Scripts/Character/AC_Skeleton.cs" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/Assets/Scripts/CustomEditors/BuildCustomWindow.cs" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/Assets/Scripts/Player/FristPersonController.cs" charset="UTF-8" />
+    <file url="PROJECT" charset="x-windows-949" />
+  </component>
+</project>

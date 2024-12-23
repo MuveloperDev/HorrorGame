@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 velocity;
     bool isGrounded;
+    // ¾È³ç
 
 #if ENABLE_INPUT_SYSTEM
     InputAction movement;

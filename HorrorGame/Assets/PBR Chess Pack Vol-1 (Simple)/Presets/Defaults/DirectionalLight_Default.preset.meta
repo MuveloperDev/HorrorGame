@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c1cf8506f04ef2c4a88b64b6c4202eea
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 179500
+  packageName: PBR Chess Board Vol - 1 HDRP
+  packageVersion: 1.2
+  assetPath: Assets/PBR Chess Pack Vol-1 (Simple)/Presets/Defaults/DirectionalLight_Default.preset
+  uploadId: 622542

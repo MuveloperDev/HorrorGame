@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d824272bf4e1ea149915f95f4d19802d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 179500
+  packageName: PBR Chess Board Vol - 1 HDRP
+  packageVersion: 1.2
+  assetPath: Assets/PBR Chess Pack Vol-1 (Simple)/Settings/PostProcessVolumeProfile.asset
+  uploadId: 622542

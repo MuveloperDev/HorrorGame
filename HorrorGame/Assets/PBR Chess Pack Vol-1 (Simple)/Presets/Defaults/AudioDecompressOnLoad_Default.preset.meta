@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0cd792cc87e492d43b4e95b205fc5cc6
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 179500
+  packageName: PBR Chess Board Vol - 1 HDRP
+  packageVersion: 1.2
+  assetPath: Assets/PBR Chess Pack Vol-1 (Simple)/Presets/Defaults/AudioDecompressOnLoad_Default.preset
+  uploadId: 622542

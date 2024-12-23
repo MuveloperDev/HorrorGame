@@ -41,11 +41,11 @@ public class FristPersonController : MonoBehaviour
 
     private void Rotation()
     {
-        // 마우스 입력 받기
+        // ???? ??? ???
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        // 카메라 회전 (상하)
+        // ???? ??? (????)
         xRot -= mouseY * rotSpeed;
         yRot += mouseX * rotSpeed;
         xRot = Mathf.Clamp(xRot, -45f, 45f);
@@ -54,7 +54,7 @@ public class FristPersonController : MonoBehaviour
     }
     private void Move()
     {
-        // 키보드 입력 받기
+        // ????? ??? ???
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
 
